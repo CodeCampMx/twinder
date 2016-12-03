@@ -22,7 +22,7 @@ defmodule Twinder.Followers do
 
     common_followers = for follower_u1 <- followers_of_u1,
                            follower_u2 <- followers_of_u2,
-                           follower_u1.id == follower_u2,
+                           follower_u1.id == follower_u2.id,
                            do: follower_u1
 
     IO.puts common_followers
@@ -32,7 +32,7 @@ defmodule Twinder.Followers do
   end
 
   def common_bff(bff1, bff2) do
-    for bff_of_u1 <- bff1, bff_of_u2 <- bff2, bff_of_u1.id == bff_of_u2, do: bff_of_u1
+    for bff_of_u1 <- bff1, bff_of_u2 <- bff2, bff_of_u1.id == bff_of_u2.id, do: bff_of_u1
   end
 
   def find_followers_for(username) do
