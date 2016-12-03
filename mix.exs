@@ -39,6 +39,7 @@ defmodule Twinder.Mixfile do
      {:gettext, "~> 0.11"},
      {:oauth, github: "tim/erlang-oauth"},
      {:extwitter, "0.7.2"},
+     {:graphvix, "~> 0.5.0"},
      {:cowboy, "~> 1.0"}]
   end
 
