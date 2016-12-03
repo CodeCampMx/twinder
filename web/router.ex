@@ -20,7 +20,9 @@ defmodule Twinder.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Twinder do
-  #   pipe_through :api
-  # end
+  scope "/api", Twinder do
+    pipe_through :api
+
+    get "/twinder", TwinderController, :index
+  end
 end
