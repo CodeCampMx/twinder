@@ -24,6 +24,19 @@ defmodule Twinder.Followers do
     {common_followers, common_bff}
   end
 
+  def common_bff_followers(bff) do
+    bff_followers = for b <- bff, do: { b, ExTwitter.follower_ids(b.id) }
+  end
+
+  def matches(user, user2, followers, bff) do
+    for f <- followers.items, f == user.id, do: {user.screen_name,user2.screen_name}
+    relaciones = for {user1, followers1} <- bff_followers,
+                     {user2, followers2} <- bff_followers,
+                     do: Twinder.Followers.matches user1,user2, followers2, bff
+    relaciones |> Enum.filter(fn x -> Enum.count(x)>0 end) |> Enum.map fn [h|_] -> h end
+
+  end
+
   def common_bff(bff1, bff2) do
     for bff_of_u1 <- bff1, bff_of_u2 <- bff2, bff_of_u1.id == bff_of_u2.id, do: bff_of_u1
   end
