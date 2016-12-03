@@ -20,9 +20,7 @@ defmodule Twinder.Followers do
                            follower_u1.id == follower_u2.id,
                            do: follower_u1
 
-    IO.inspect common_followers
     common_bff = common_bff(bff1,bff2)
-    IO.inspect common_bff
     {common_followers, common_bff}
   end
 
