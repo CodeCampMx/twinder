@@ -5,12 +5,7 @@ defmodule Twinder.Followers do
     friends_for_u2 = find_friends(username2)
     followers_of_u1 = find_followers_for(username1)
     followers_of_u2 = find_followers_for(username2)
-    IO.inspect friends_for_u1
-    IO.inspect friends_for_u2
-    IO.inspect followers_of_u1
-    IO.inspect followers_of_u2
-    #following_for_u1 = for f <- friends_u1, f.following == true, do: f
-    #following_for_u2 = for f <- friends_u2, f.following == true, do: f
+
     bff1 = for friend_id <- friends_for_u1,
                follower <- followers_of_u1,
                friend_id == follower.id,
@@ -25,9 +20,9 @@ defmodule Twinder.Followers do
                            follower_u1.id == follower_u2.id,
                            do: follower_u1
 
-    IO.puts common_followers
+    IO.inspect common_followers
     common_bff = common_bff(bff1,bff2)
-    IO.puts common_bff
+    IO.inspect common_bff
     {common_followers, common_bff}
   end
 
